@@ -56,7 +56,7 @@ if ( curr_user !== null &&  curr_user !== "") {
                     <a class="nav-link" style={{fontSize: "larger"}} href="/contact">Contact Us</a>
                   </li>
                 </ul>
-                <span class="navbar-text">
+                <span className="navbar-text" style={{marginLeft:"auto", paddingRight:"12px"}}>
                   <div class="loginlink" id="loginlogout">
                   {home_page_items}
                   </div>
