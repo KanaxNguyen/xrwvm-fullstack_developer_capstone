@@ -1,0 +1,2 @@
+$ curl -b capstone-cookies.txt http://127.0.0.1:8000/djangoapp/logout
+{"userName": "root", "status": "Logged out"}

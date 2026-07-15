@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: best-cars-capstone
+    runtime: docker
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "true"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true

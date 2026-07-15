@@ -1,0 +1,2 @@
+$ curl -c capstone-cookies.txt -X POST http://127.0.0.1:8000/djangoapp/login -H "Content-Type: application/json" -d '{"userName":"root","password":"RootPass123!"}'
+{"userName": "root", "firstName": "Root", "lastName": "Administrator", "status": "Authenticated"}

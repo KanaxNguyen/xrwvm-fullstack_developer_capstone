@@ -1,0 +1,54 @@
+$ curl http://127.0.0.1:8000/djangoapp/get_dealers
+status=200 dealer_count=50
+
+id  full_name                       state
+1   Holdlamis Car Dealership        Texas
+2   Temp Car Dealership             Minnesota
+3   Sub-Ex Car Dealership           Alabama
+4   Solarbreeze Car Dealership      Texas
+5   Regrant Car Dealership          Maryland
+6   Stronghold Car Dealership       Pennsylvania
+7   Job Car Dealership              Colorado
+8   Bytecard Car Dealership         Kansas
+9   Job Car Dealership              Texas
+10  Alphazap Car Dealership         District of Columbia
+11  Rank Car Dealership             Illinois
+12  Tin Car Dealership              Maryland
+13  Y-Solowarm Car Dealership       Maryland
+14  It Car Dealership               California
+15  Tempsoft Car Dealership         Texas
+16  Treeflex Car Dealership         Texas
+17  Home Ing Car Dealership         California
+18  Bitchip Car Dealership          California
+19  Otcom Car Dealership            Florida
+20  Subin Car Dealership            Michigan
+21  Andalax Car Dealership          California
+22  Y-Solowarm Car Dealership       Florida
+23  Bitchip Car Dealership          Iowa
+24  Aerified Car Dealership         New York
+25  Opela Car Dealership            District of Columbia
+26  Flowdesk Car Dealership         Pennsylvania
+27  Namfix Car Dealership           Texas
+28  Fixflex Car Dealership          Florida
+29  Fix San Car Dealership          California
+30  Opela Car Dealership            Texas
+31  Fintone Car Dealership          New York
+32  Subin Car Dealership            Pennsylvania
+33  Tres-Zap Car Dealership         Iowa
+34  Gembucket Car Dealership        Maryland
+35  Treeflex Car Dealership         Washington
+36  Latlux Car Dealership           Virginia
+37  Ventosanzap Car Dealership      Michigan
+38  Zamit Car Dealership            Texas
+39  Stronghold Car Dealership       California
+40  Greenlam Car Dealership         Virginia
+41  Tres-Zap Car Dealership         Maryland
+42  Konklab Car Dealership          New Jersey
+43  Opela Car Dealership            Georgia
+44  Veribet Car Dealership          Virginia
+45  Konklux Car Dealership          Virginia
+46  Regrant Car Dealership          Louisiana
+47  Prodder Car Dealership          Connecticut
+48  It Car Dealership               Arizona
+49  Veribet Car Dealership          Georgia
+50  Aerified Car Dealership         Georgia

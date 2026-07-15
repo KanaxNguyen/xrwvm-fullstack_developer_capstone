@@ -6,8 +6,10 @@
   <link rel="stylesheet" href="static/bootstrap.min.css">
 <script>
 
-const logout = async (e) => {
-//Include the code for logout here.
+const logout = async () => {
+  await fetch('/djangoapp/logout', {method: 'GET'});
+  sessionStorage.clear();
+  window.location.href = '/';
 };
 
 let checkSession = ()=>{
@@ -16,7 +18,7 @@ let checkSession = ()=>{
   if (curr_user && curr_user !== "") {
     document.getElementById("loginlogout").innerHTML = 
     '<span class="homepage_links">' + curr_user +'</span>' +
-    '<a class="homepage_links" onclick="logout()" href="/">Logout</a>'
+    '<a class="homepage_links" onclick="logout(); return false;" href="/">Logout</a>'
   } else {
     document.getElementById("loginlogout").innerHTML = 
     '<a class="homepage_links" href="/login">Login</a>'+

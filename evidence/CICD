@@ -1,0 +1,21 @@
+$ gh run view 29388196933 --repo KanaxNguyen/xrwvm-fullstack_developer_capstone
+
+✓ agent/complete-capstone Capstone CI #1
+Triggered via pull_request
+
+JOBS
+✓ build-test in 44s (ID 87265767420)
+  ✓ Set up job
+  ✓ Checkout repository
+  ✓ Set up Python
+  ✓ Install Python dependencies
+  ✓ Run Django checks
+  ✓ Set up Node.js
+  ✓ Install frontend dependencies
+  ✓ Build frontend
+  ✓ Post Set up Node.js
+  ✓ Post Set up Python
+  ✓ Post Checkout repository
+  ✓ Complete job
+
+Run: https://github.com/KanaxNguyen/xrwvm-fullstack_developer_capstone/actions/runs/29388196933
