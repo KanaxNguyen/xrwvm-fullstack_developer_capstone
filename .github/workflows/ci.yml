@@ -7,7 +7,43 @@ on:
     branches: [ main ]
 
 jobs:
+  lint-python:
+    name: Lint Python Files
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Run Linter
+        run: python -m compileall -q djangoapp djangoproj
+
+  lint-javascript:
+    name: Lint JavaScript Files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install JSHint
+        run: npm install --global jshint
+      - name: Run Linter
+        run: |
+          jshint --config .jshintrc server/database/app.js
+          node --check server/database/app.js
+
   build-test:
+    name: Build and Test
     runs-on: ubuntu-latest
     defaults:
       run:

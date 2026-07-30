@@ -95,22 +95,25 @@ const PostReview = () => {
       <Header/>
       <div  style={{margin:"2% 6%"}}>
       <h1 style={{color:"darkblue"}}>{dealer.full_name}</h1>
-      <textarea id='review' cols='50' rows='5' onChange={(e) => setReview(e.target.value)}></textarea>
+      <label htmlFor="review">Review</label>
+      <textarea id='review' cols='50' rows='5' value={review} onChange={(e) => setReview(e.target.value)}></textarea>
       <div className='input_field'>
-      Purchase Date <input type="date" onChange={(e) => setDate(e.target.value)}/>
+      <label htmlFor="purchase-date">Purchase Date</label>
+      <input id="purchase-date" type="date" value={date} onChange={(e) => setDate(e.target.value)}/>
       </div>
       <div className='input_field'>
-      Car Make 
-      <select name="cars" id="cars" onChange={(e) => setModel(e.target.value)}>
-      <option value="" selected disabled hidden>Choose Car Make and Model</option>
+      <label htmlFor="cars">Car Make and Model</label>
+      <select name="cars" id="cars" value={model || ""} onChange={(e) => setModel(e.target.value)}>
+      <option value="" disabled>Choose Car Make and Model</option>
       {carmodels.map(carmodel => (
-          <option value={carmodel.CarMake+" "+carmodel.CarModel}>{carmodel.CarMake} {carmodel.CarModel}</option>
+          <option key={`${carmodel.CarMake}-${carmodel.CarModel}`} value={carmodel.CarMake+" "+carmodel.CarModel}>{carmodel.CarMake} {carmodel.CarModel}</option>
       ))}
       </select>        
       </div >
 
       <div className='input_field'>
-      Car Year <input type="number" onChange={(e) => setYear(e.target.value)} max={2026} min={2015}/>
+      <label htmlFor="car-year">Car Year</label>
+      <input id="car-year" type="number" value={year} onChange={(e) => setYear(e.target.value)} max={2026} min={2015}/>
       </div>
 
       <div>
