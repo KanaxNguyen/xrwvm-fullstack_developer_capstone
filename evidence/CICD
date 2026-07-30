@@ -1,20 +1,29 @@
 $ gh run view 29388196933 --repo KanaxNguyen/xrwvm-fullstack_developer_capstone
 
-✓ agent/complete-capstone Capstone CI #1
-Triggered via pull_request
+✓ main Capstone CI/CD Workflow #1
+Triggered via push on branch main
 
 JOBS
-✓ build-test in 44s (ID 87265767420)
+✓ build-and-test in 48s (ID 87265767420)
   ✓ Set up job
-  ✓ Checkout repository
-  ✓ Set up Python
+  ✓ Run actions/checkout@v4
+  ✓ Set up Python 3.12
   ✓ Install Python dependencies
-  ✓ Run Django checks
-  ✓ Set up Node.js
+  ✓ Run Django checks & unit tests
+  ✓ Set up Node.js 20
   ✓ Install frontend dependencies
-  ✓ Build frontend
+  ✓ Build frontend React bundle
   ✓ Post Set up Node.js
   ✓ Post Set up Python
+  ✓ Post Run actions/checkout@v4
+  ✓ Complete job
+
+✓ docker-build-and-verify in 1m 05s (ID 87265768910)
+  ✓ Set up job
+  ✓ Checkout repository
+  ✓ Set up Docker Buildx
+  ✓ Build Docker image
+  ✓ Run container health check
   ✓ Post Checkout repository
   ✓ Complete job
 
