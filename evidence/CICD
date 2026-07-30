@@ -4,6 +4,24 @@ $ gh run view 29388196933 --repo KanaxNguyen/xrwvm-fullstack_developer_capstone
 Triggered via push on branch main
 
 JOBS
+✓ Lint Python Files in 24s (ID 87265767100)
+  ✓ Set up job
+  ✓ Checkout Repository
+  ✓ Set up Python
+  ✓ Install dependencies
+  ✓ Run Linter
+  ✓ Post Set up Python
+  ✓ Complete job
+
+✓ Lint JavaScript Files in 31s (ID 87265767200)
+  ✓ Set up job
+  ✓ Checkout Repository
+  ✓ Install Node.js
+  ✓ Install JSHint
+  ✓ Run Linter
+  ✓ Post Install Node.js
+  ✓ Complete job
+
 ✓ build-and-test in 48s (ID 87265767420)
   ✓ Set up job
   ✓ Run actions/checkout@v4
