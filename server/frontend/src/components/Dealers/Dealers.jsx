@@ -3,48 +3,51 @@ import "./Dealers.css";
 import "../assets/style.css";
 import Header from '../Header/Header';
 import review_icon from "../assets/reviewicon.png"
+import { useNavigate, useParams } from "react-router-dom";
 
 const Dealers = () => {
   const [dealersList, setDealersList] = useState([]);
-  // let [state, setState] = useState("")
-  let [states, setStates] = useState([])
+  const [states, setStates] = useState([]);
+  const navigate = useNavigate();
+  const { state: selectedState } = useParams();
 
-  // let root_url = window.location.origin
-  let dealer_url ="/djangoapp/get_dealers";
-  
-  let dealer_url_by_state = "/djangoapp/get_dealers/";
- 
   const filterDealers = async (state) => {
-    dealer_url_by_state = dealer_url_by_state+state;
-    const res = await fetch(dealer_url_by_state, {
+    const endpoint = state === "All"
+      ? "/djangoapp/get_dealers"
+      : `/djangoapp/get_dealers/${encodeURIComponent(state)}`;
+    const res = await fetch(endpoint, {
       method: "GET"
     });
     const retobj = await res.json();
-    if(retobj.status === 200) {
-      let state_dealers = Array.from(retobj.dealers)
-      setDealersList(state_dealers)
+    if (retobj.status === 200) {
+      setDealersList(Array.from(retobj.dealers));
+      navigate(state === "All" ? "/dealers" : `/dealers/${encodeURIComponent(state)}`);
     }
-  }
+  };
 
-  const get_dealers = async ()=>{
-    const res = await fetch(dealer_url, {
+  const getDealers = async () => {
+    const res = await fetch("/djangoapp/get_dealers", {
       method: "GET"
     });
     const retobj = await res.json();
-    if(retobj.status === 200) {
-      let all_dealers = Array.from(retobj.dealers)
-      let states = [];
-      all_dealers.forEach((dealer)=>{
-        states.push(dealer.state)
-      });
-
-      setStates(Array.from(new Set(states)))
-      setDealersList(all_dealers)
+    if (retobj.status === 200) {
+      const allDealers = Array.from(retobj.dealers);
+      setStates(Array.from(new Set(allDealers.map((dealer) => dealer.state))));
+      if (selectedState) {
+        const stateResponse = await fetch(
+          `/djangoapp/get_dealers/${encodeURIComponent(selectedState)}`
+        );
+        const stateResult = await stateResponse.json();
+        setDealersList(Array.from(stateResult.dealers || []));
+      } else {
+        setDealersList(allDealers);
+      }
     }
-  }
+  };
+
   useEffect(() => {
-    get_dealers();
-  },[]);  
+    getDealers();
+  }, [selectedState]);
 
 
 let isLoggedIn = sessionStorage.getItem("username") != null ? true : false;
@@ -53,6 +56,7 @@ return(
       <Header/>
 
      <table className='table'>
+      <thead>
       <tr>
       <th>ID</th>
       <th>Dealer Name</th>
@@ -60,11 +64,11 @@ return(
       <th>Address</th>
       <th>Zip</th>
       <th>
-      <select name="state" id="state" onChange={(e) => filterDealers(e.target.value)}>
-      <option value="" selected disabled hidden>State</option>
+      <select name="state" id="state" value={selectedState || ""} onChange={(e) => filterDealers(e.target.value)}>
+      <option value="" disabled>State</option>
       <option value="All">All States</option>
       {states.map(state => (
-          <option value={state}>{state}</option>
+          <option key={state} value={state}>{state}</option>
       ))}
       </select>        
 
@@ -74,8 +78,10 @@ return(
          ):<></>
       }
       </tr>
+      </thead>
+      <tbody>
      {dealersList.map(dealer => (
-        <tr>
+        <tr key={dealer.id}>
           <td>{dealer['id']}</td>
           <td><a href={'/dealer/'+dealer['id']}>{dealer['full_name']}</a></td>
           <td>{dealer['city']}</td>
@@ -88,7 +94,8 @@ return(
           }
         </tr>
       ))}
-     </table>;
+      </tbody>
+     </table>
   </div>
 )
 }

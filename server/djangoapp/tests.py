@@ -69,3 +69,15 @@ class DealershipApiTests(TestCase):
         self.assertEqual(cars[0]["CarMake"], "Toyota")
         sentiment = self.client.get("/djangoapp/analyze/Fantastic%20services").json()
         self.assertEqual(sentiment["sentiment"], "positive")
+
+    def test_react_routes_accept_submission_urls_without_trailing_slashes(self):
+        for route in (
+            "/dealers",
+            "/dealers/Kansas",
+            "/dealer/15",
+            "/postreview/15",
+            "/login",
+            "/register",
+        ):
+            with self.subTest(route=route):
+                self.assertEqual(self.client.get(route).status_code, 200)

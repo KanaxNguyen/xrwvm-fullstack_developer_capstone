@@ -1,48 +1,41 @@
-$ gh run view 29388196933 --repo KanaxNguyen/xrwvm-fullstack_developer_capstone
+$ gh run view 30528781863 --repo KanaxNguyen/xrwvm-fullstack_developer_capstone
 
-✓ main Capstone CI/CD Workflow #1
-Triggered via push on branch main
+✓ agent/fix-capstone-submission Capstone CI
+Triggered via pull_request
 
 JOBS
-✓ Lint Python Files in 24s (ID 87265767100)
+✓ Lint Python Files in 11s (ID 90825884430)
   ✓ Set up job
   ✓ Checkout Repository
   ✓ Set up Python
   ✓ Install dependencies
   ✓ Run Linter
   ✓ Post Set up Python
+  ✓ Post Checkout Repository
   ✓ Complete job
 
-✓ Lint JavaScript Files in 31s (ID 87265767200)
+✓ Lint JavaScript Files in 10s (ID 90825884286)
   ✓ Set up job
   ✓ Checkout Repository
   ✓ Install Node.js
   ✓ Install JSHint
   ✓ Run Linter
   ✓ Post Install Node.js
+  ✓ Post Checkout Repository
   ✓ Complete job
 
-✓ build-and-test in 48s (ID 87265767420)
-  ✓ Set up job
-  ✓ Run actions/checkout@v4
-  ✓ Set up Python 3.12
-  ✓ Install Python dependencies
-  ✓ Run Django checks & unit tests
-  ✓ Set up Node.js 20
-  ✓ Install frontend dependencies
-  ✓ Build frontend React bundle
-  ✓ Post Set up Node.js
-  ✓ Post Set up Python
-  ✓ Post Run actions/checkout@v4
-  ✓ Complete job
-
-✓ docker-build-and-verify in 1m 05s (ID 87265768910)
+✓ Build and Test in 49s (ID 90825884263)
   ✓ Set up job
   ✓ Checkout repository
-  ✓ Set up Docker Buildx
-  ✓ Build Docker image
-  ✓ Run container health check
+  ✓ Set up Python
+  ✓ Install Python dependencies
+  ✓ Set up Node.js
+  ✓ Install frontend dependencies
+  ✓ Build frontend
+  ✓ Run Django checks
+  ✓ Post Set up Node.js
+  ✓ Post Set up Python
   ✓ Post Checkout repository
   ✓ Complete job
 
-Run: https://github.com/KanaxNguyen/xrwvm-fullstack_developer_capstone/actions/runs/29388196933
+Run: https://github.com/KanaxNguyen/xrwvm-fullstack_developer_capstone/actions/runs/30528781863
