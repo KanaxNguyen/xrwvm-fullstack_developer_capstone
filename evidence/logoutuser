@@ -1,2 +1,2 @@
-$ curl -b capstone-cookies.txt http://127.0.0.1:8000/djangoapp/logout
+$ curl -b capstone-cookies.txt https://best-cars-capstone-kanax.onrender.com/djangoapp/logout
 {"userName": "", "status": "Logged out"}

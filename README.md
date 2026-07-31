@@ -11,6 +11,11 @@ The repository includes a self-contained JSON fallback for dealer and review
 data, a Django admin interface for car makes and models, a React frontend,
 automated tests, and a GitHub Actions workflow.
 
+Live application: https://best-cars-capstone-kanax.onrender.com
+
+The exact URLs, evidence files, and screenshots for all 28 grading tasks are
+listed in [SUBMISSION_ANSWERS.md](SUBMISSION_ANSWERS.md).
+
 ### Run locally
 
 ```bash

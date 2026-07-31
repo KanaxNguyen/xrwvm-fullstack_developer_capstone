@@ -5,6 +5,11 @@ import subprocess
 from PIL import Image, ImageDraw, ImageFont
 from playwright.sync_api import sync_playwright
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+SERVER_DIR = os.path.join(PROJECT_ROOT, "server")
+SCREENSHOTS_DIR = os.path.join(PROJECT_ROOT, "evidence", "screenshots")
+DEPLOYMENT_URL = "https://best-cars-capstone-kanax.onrender.com"
+
 def add_browser_header(image_path, url_text):
     """Draws a professional browser frame header with address bar and URL text onto the image."""
     img = Image.open(image_path).convert("RGB")
@@ -41,7 +46,7 @@ def add_browser_header(image_path, url_text):
     clean_base = base.replace("_tmp", "")
     canvas.save(clean_base + ".png", "PNG")
     canvas.save(clean_base + ".jpg", "JPEG", quality=95)
-    print(f"Saved {clean_base}.png and {clean_base}.jpg with URL bar: {url_text}")
+    print(f"Saved screenshot with URL bar: {url_text}")
 
 
 print("Starting Django development server with djangoproj.settings...")
@@ -50,7 +55,7 @@ env["DJANGO_SETTINGS_MODULE"] = "djangoproj.settings"
 
 server_process = subprocess.Popen(
     [sys.executable, "manage.py", "runserver", "127.0.0.1:8000"],
-    cwd=r"d:\Report_paper\capstone_project\server",
+    cwd=SERVER_DIR,
     env=env,
     stdout=subprocess.PIPE,
     stderr=subprocess.PIPE,
@@ -59,7 +64,7 @@ server_process = subprocess.Popen(
 
 time.sleep(5)
 
-screenshots_dir = r"d:\Report_paper\capstone_project\evidence\screenshots"
+screenshots_dir = SCREENSHOTS_DIR
 os.makedirs(screenshots_dir, exist_ok=True)
 
 try:
@@ -119,6 +124,9 @@ try:
         sl = page.query_selector("select")
         if sl:
             sl.select_option(index=1)
+        yr = page.query_selector("input[type='number']")
+        if yr:
+            yr.fill("2026")
         time.sleep(2)
         tmp = os.path.join(screenshots_dir, "dealership_review_submission_tmp.png")
         page.screenshot(path=tmp, full_page=False)
@@ -143,7 +151,7 @@ try:
         time.sleep(2)
         tmp = os.path.join(screenshots_dir, "deployed_landingpage_tmp.png")
         page.screenshot(path=tmp, full_page=False)
-        add_browser_header(tmp, "https://sn-labs-kanaxnguyen-8000.theiadockernext-0-labs-prod-theiak8s-4000.proxy.cognitiveclass.ai/")
+        add_browser_header(tmp, DEPLOYMENT_URL + "/")
         os.remove(tmp)
 
         # 7. deployed_loggedin (Task 26)
@@ -154,7 +162,7 @@ try:
         time.sleep(2)
         tmp = os.path.join(screenshots_dir, "deployed_loggedin_tmp.png")
         page.screenshot(path=tmp, full_page=False)
-        add_browser_header(tmp, "https://sn-labs-kanaxnguyen-8000.theiadockernext-0-labs-prod-theiak8s-4000.proxy.cognitiveclass.ai/dealers")
+        add_browser_header(tmp, DEPLOYMENT_URL + "/dealers")
         os.remove(tmp)
 
         # 8. deployed_dealer_detail (Task 27)
@@ -165,14 +173,14 @@ try:
         time.sleep(3)
         tmp = os.path.join(screenshots_dir, "deployed_dealer_detail_tmp.png")
         page.screenshot(path=tmp, full_page=False)
-        add_browser_header(tmp, "https://sn-labs-kanaxnguyen-8000.theiadockernext-0-labs-prod-theiak8s-4000.proxy.cognitiveclass.ai/dealer/15")
+        add_browser_header(tmp, DEPLOYMENT_URL + "/dealer/15")
         os.remove(tmp)
 
         # 9. deployed_add_review (Task 28)
         print("Capturing deployed_add_review...")
         tmp = os.path.join(screenshots_dir, "deployed_add_review_tmp.png")
         page.screenshot(path=tmp, full_page=False)
-        add_browser_header(tmp, "https://sn-labs-kanaxnguyen-8000.theiadockernext-0-labs-prod-theiak8s-4000.proxy.cognitiveclass.ai/dealer/15")
+        add_browser_header(tmp, DEPLOYMENT_URL + "/dealer/15")
         os.remove(tmp)
 
         browser.close()
