@@ -1,2 +1,2 @@
-$ curl -X GET http://127.0.0.1:8000/fetchDealers/Kansas
+$ curl -X GET https://best-cars-capstone-kanax.onrender.com/fetchDealers/Kansas
 [{"id": 8, "city": "Topeka", "state": "Kansas", "st": "KS", "address": "288 Larry Place", "zip": "66642", "lat": 39.0429, "long": -95.7697, "short_name": "Bytecard", "full_name": "Bytecard Car Dealership"}]
